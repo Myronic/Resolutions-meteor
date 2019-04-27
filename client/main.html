@@ -1,0 +1,111 @@
+<head>
+  <title>resolutions</title>
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous"
+  />
+</head>
+
+<body>
+  <div class="container text-center">
+    <header>
+      <br />
+      <h1 class="text-primary">Resolutions 2019</h1>
+      <label class="hide-finished">
+        <input type="checkbox" checked="{{ hidefinished }}" />
+        Hide Accomplished Resolutions
+      </label>
+      <hr />
+      <br />
+      <form class="new-resolution form-group">
+        <div class="row justify-content-between">
+          <div class="col-7">
+            <input
+              type="text"
+              class="form-control"
+              name="title"
+              placeholder="enter new resolution..."
+            />
+          </div>
+          <div class="col-2">
+            <select name="month" class="form-control">
+              <option value="0">January</option>
+              <option value="1">February</option>
+              <option value="2">March</option>
+              <option value="3">April</option>
+              <option value="4">May</option>
+              <option value="5">June</option>
+              <option value="6">July</option>
+              <option value="7">August</option>
+              <option value="8">September</option>
+              <option value="9">October</option>
+              <option value="10">November</option>
+              <option value="11">December</option>
+            </select>
+          </div>
+          <div class="col-3">
+            <input
+              type="submit"
+              value="Add Resolution"
+              class="btn btn btn-primary"
+            />
+          </div>
+        </div>
+      </form>
+
+    </header>
+
+    <table class="table table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">stat</th>
+          <th scope="col">month</th>
+          <th scope="col">Resolution</th>
+          <th scope="col">Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each resolutions}}
+        {{>resolution}}
+        {{/each}}
+      </tbody>
+    </table>
+    <br>
+    <hr>
+    {{>clearAll}}
+  </div>
+</body>
+
+<template name="resolution">
+  <tr class="table-light">
+    <td scope="row">
+      <input
+        class="form-check-input toggle-checked"
+        type="checkbox"
+        checked="{{ checked }}"
+      />
+    </td>
+
+    <td class="{{#if checked}}checked{{/if}}">
+      <h5>{{ month }}</h5>
+    </td>
+    <td class="{{#if checked}}checked{{/if}}">
+      <h5 class="txt">{{ title }}</h5>
+    </td>
+    <td>
+      <button class="remove btn btn-sm btn-danger">remove</button>
+    </td>
+  </tr>
+</template>
+
+<template name="clearAll">
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+        <button class="allclear btn btn-block btn-danger">
+            Clear all resolutions
+          </button>
+    </div>
+  </div>
+</template>

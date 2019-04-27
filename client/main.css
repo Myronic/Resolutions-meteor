@@ -1,0 +1,7 @@
+td.checked {
+    color: #888;
+  }
+   
+  td.checked .txt {
+    text-decoration: line-through;
+  }
